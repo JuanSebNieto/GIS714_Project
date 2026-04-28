@@ -345,10 +345,6 @@ rm(lapse_df, model)
 
 #Precipitation Modelling----
 
-#Rather than down-scaling a raster surface to a DEM, interpolate the weather station points....
-#...to a new grid while taking into account the effect of elevation/aspect. 
-#Options include: Spline with elevation, kridging with elevation.
-
 #Summarizing to a monthly level.
 psum_month <- tapp(psum, format(time(psum), "%Y-%m"), sum)
 names(psum_month) <- format(time(psum), "%Y-%m") %>% unique
@@ -548,6 +544,10 @@ test_df$ann_predictions <- predict(ann_model, newdata = test_df, type = "raw")
 rm(params, hyperparams, ann_model, folds, ctrl, train_df, test_df)
 
 #Precipitation Kridging----
+
+#Rather than down-scaling a raster surface to a DEM, interpolate the weather station points....
+#...to a new grid while taking into account the effect of elevation/aspect. 
+#Options include: Spline with elevation, kridging with elevation.
 
 ntonj_dem <- rast("C:\\Users\\Nietolaj\\OneDrive - Mondigroup\\NC State\\Spring 2026\\Geospatial Computation and Simulation\\Project\\Spatial Data\\DEM\\Ntonj.tif")
 ntonj_dem <- project(ntonj_dem, crs(psum))

@@ -380,7 +380,3 @@ ggplot() +
   coord_sf(xlim = c(16, 33),ylim = c(-35, -22))
 
 
-
-#Plotting a shapefile of the stations.
-
-
